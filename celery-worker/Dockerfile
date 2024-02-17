@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
-RUN git clone git@github.com:IceGuyMusic/ProjectJadzia.git .
+RUN git clone https://github.com/IceGuyMusic/ProjectJadzia.git .
 
 RUN pip install -r requirements.txt
 
