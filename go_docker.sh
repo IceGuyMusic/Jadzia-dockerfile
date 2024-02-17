@@ -21,21 +21,20 @@ fi
 error_handling() {
   if [ $? -ne 0 ]; then
     echo "An error occurred. Stopping the script."
-    curl -H "ta:skull" -d "Job is stopped. Maybe an error" http://172-104-242-141.ip.linodeusercontent.com/computer_logs
     exit 1
   fi
 }
 
 # Build and push Docker images
-docker build -t iceguy/jadzia-flask:$TAG -f Dockerfile.flask . && \
+docker build -t iceguy/jadzia-flask:$TAG -f jadzia/Dockerfile . && \
 docker push iceguy/jadzia-flask:$TAG
 error_handling
 
-docker build -t iceguy/jadzia-celery:$TAG -f Dockerfile.celery . && \
+docker build -t iceguy/jadzia-celery:$TAG -f celery-worker/Dockerfile . && \
 docker push iceguy/jadzia-celery:$TAG
 error_handling
 
-# Notify job completion
-curl -H "ta:tada" -d "Job is finished" http://172-104-242-141.ip.linodeusercontent.com/computer_logs || \
+docker build -t iceguy/healthcheck:$TAG -f healthcheck/Dockerfile . && \
+docker push iceguy/jadzia-celery:$TAG
 error_handling
 
