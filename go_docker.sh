@@ -34,7 +34,7 @@ docker build -t iceguy/jadzia-celery:$TAG -f celery-worker/Dockerfile . && \
 docker push iceguy/jadzia-celery:$TAG
 error_handling
 
-docker build -t iceguy/healthcheck:$TAG -f healthcheck/Dockerfile . && \
+docker build -t iceguy/healthcheck:$TAG -f healtcheck/Dockerfile . && \
 docker push iceguy/healthcheck:$TAG
 error_handling
 
