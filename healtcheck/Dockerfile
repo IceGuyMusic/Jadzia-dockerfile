@@ -3,6 +3,8 @@ FROM openms/executables
 
 RUN apt-get update && apt-get install -y python3-pip && python3 -m pip install flask
 
+WORKDIR /app
+
 RUN git clone https://github.com/IceGuyMusic/Healthcheck_mzML.git .
 
 EXPOSE 5000
